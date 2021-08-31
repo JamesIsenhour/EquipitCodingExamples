@@ -1,0 +1,52 @@
+@import 'mixins';
+@import 'colors';
+
+%divider_bar {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: $primary_color_dark;
+}
+
+.section_title {
+  @include flex-box($align: center);
+  width: 100%;
+  margin: 10px 0;
+
+  > p {
+    @include reset-margins;
+    color: $primary_color_dark;
+    font-size: 1em;
+    font-weight: 500;
+    margin: 0 5px;
+    white-space: nowrap;
+  }
+
+  &:before {
+    @extend %divider_bar;
+    flex: 0 0 auto;
+    width: 2%;
+  }
+
+  &:after {
+    @extend %divider_bar;
+    width: 100%;
+  }
+}
+
+.section {
+  @include flex-box($content: center, $wrap: wrap);
+  align-content: flex-start;
+  width: 100%;
+}
+
+.empty_loadout {
+  width: 45%;
+  height: 1px;
+}
+
+.empty_item {
+  width: 25vw;
+  margin: 0 10px;
+  height: 1px;
+}

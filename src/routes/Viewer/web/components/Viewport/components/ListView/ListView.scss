@@ -1,0 +1,28 @@
+@import 'colors';
+@import 'mixins';
+
+.list_container {
+  composes: bkg_color_off_white from global;
+  @include flex-box($direction: column);
+  width: 100%;
+}
+
+.slideshow_title {
+  composes: bkg_color_primary_dark font_color_white from global;
+  @include reset-margins;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.4em;
+  font-weight: 400;
+}
+
+.results_container {
+  composes: bkg_color_off_white from global;
+  @include flex-box;
+  flex: 1 auto;
+  padding: 10px;
+  padding-top: 0;
+}

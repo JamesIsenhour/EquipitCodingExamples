@@ -1,0 +1,38 @@
+@import 'mixins';
+@import 'colors';
+
+.banner_container {
+  overflow: hidden;
+}
+
+.banner {
+  flex: 0 0 auto;
+  width: 100%;
+  overflow: hidden;
+  height: 60vh;
+}
+
+.banner_positioning {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  right: -50%;
+}
+
+.image {
+  position: relative;
+  left: -50%;
+  width: auto;
+  height: 100%;
+}
+
+.fading {
+  animation-name: fadeOut;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1}
+  85% {opacity: 1}
+  100% {opacity: 0}
+}

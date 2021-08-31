@@ -1,0 +1,58 @@
+@import 'colors';
+@import 'mixins';
+
+.editable_textarea_container {
+  @include flex-box($direction: column);
+  flex: auto;
+  width: 100%;
+  min-width: 100%;
+}
+
+.uneditable_text {
+  flex: auto;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+  white-space: pre-line;
+  overflow-y: auto;
+}
+
+.textarea_editing_tools_container {
+  @include flex-box($content: space-between);
+}
+
+.textarea_editing_label {
+  position: relative;
+  margin-right: 35px;
+
+  p {
+    @include reset_margins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25px;
+  }
+}
+
+.icon_button {
+  @include btn_icon(
+    $fillColor: $black,
+    $fillColorHover: $secondary_color_hover,
+    $fillColorActive: $secondary_color_active
+  );
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  padding: 3px;
+  top: 1px;
+  right: -28px;
+}
+
+.textarea_editing_save_controls {
+  align-self: center;
+
+  > button {
+    border: none;
+    background: none;
+  }
+}

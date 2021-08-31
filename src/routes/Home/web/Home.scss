@@ -1,0 +1,297 @@
+@import 'colors';
+@import 'mixins';
+
+.content_layout {
+  composes: bkg_color_primary_light from global;
+  @include flex-box($direction: column);
+  flex: 1 auto;
+}
+
+.banner_image {
+  background: url('../assets/web/EquipIt.jpg') 100% no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 0;
+  padding-top: 27%;
+}
+
+.content_container {
+  composes: bkg_color_white from global;
+  @include flex-box($direction: column);
+  flex: 1 auto;
+  position: relative;
+  align-self: center;
+  width: 70%;
+  min-width: 1024px;
+  margin-top: -250px;
+}
+
+.bar_layout {
+  padding: 40px 60px;
+  margin: 10px 0;
+}
+
+.extra_info_bar {
+  @include flex-box;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.horizontal_layout {
+  @include flex-box;
+}
+
+.vertical_layout {
+  @include flex-box($direction: column);
+}
+
+.equal_space {
+  justify-content: space-around;
+}
+
+.icon_layout {
+  width: 28%;
+
+  > h2 {
+    text-align: center;
+  }
+
+  > ul {
+    margin-bottom: 0;
+
+    > li {
+      @include reset-margins;
+      font-size: 1em;
+      margin-top: 5px;
+    }
+  }
+}
+
+.text_layout {
+  composes: font_color_primary_dark from global;
+
+  h2 {
+    @include reset-margins;
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  p {
+    @include reset-margins;
+    margin-top: 10px;
+    font-size: 1em;
+  }
+}
+
+.welcome > h2 {
+  margin-bottom: 25px;
+}
+
+.grey_background {
+  composes: bkg_color_off_white from global;
+}
+
+.home_button {
+  align-self: center;
+  padding: 8px 14px;
+  font-size: 1.2em;
+}
+
+.filled_button {
+  composes: eq_btn_secondary from global;
+}
+
+.border_button {
+  border: 3px solid $primary_color_dark;
+  color: $primary_color_dark;
+  transition: border-color 0.5s, color 0.5s;
+
+  &:hover {
+    border-color: darken($primary_color_dark, 10%);
+    color: darken($primary_color_dark, 10%);
+  }
+
+  &:active {
+    border-color: darken($primary_color_dark, 20%);
+    color: darken($primary_color_dark, 20%);
+  }
+}
+
+.hidden {
+  @include hide_element;
+}
+
+.form_container {
+  margin-right: 40px;
+}
+
+.infographic {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: center;
+  height: 90px;
+  width: 160px;
+  margin-bottom: 30px;
+}
+
+.infographic_share {
+  background-image: url('../assets/InfographicShare.png');
+}
+
+.infographic_paid {
+  background-image: url('../assets/MoneySign.svg');
+}
+
+.infographic_build {
+  background-image: url('../assets/InfographicBuild.png');
+}
+
+.sign_up_section {
+  padding: 40px 160px;
+}
+
+.image_container_embed {
+  width: 90%;
+  max-width: 600px;
+  min-width: 450px;
+}
+
+.image_container_affiliate {
+  width: 70%;
+  max-width: 600px;
+  min-width: 450px;
+}
+
+.bar_image {
+  position: relative;
+  width: 100%;
+  height: 0;
+}
+
+.embed_sizing {
+  padding-top: 70%;
+}
+
+.affiliate_sizing {
+  padding-top: 93%;
+}
+
+.image_right {
+  margin-left: 60px;
+}
+
+.image_left {
+  margin-right: 60px;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.embed_image {
+  background: url('../assets/EmbedGraphic.png') no-repeat;
+  background-size: contain;
+}
+
+.affiliate_image {
+  background: url('../assets/AffiliateGraphic.png') no-repeat;
+  background-size: contain;
+}
+
+.return_text {
+  composes: font_color_primary_dark from global;
+  @include reset-margins;
+  font-size: 1.4em;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.success_container {
+  @include flex-box($content: center, $align: center);
+  width: 100%;
+}
+
+.input_container {
+  margin-bottom: 15px;
+}
+
+.agreement {
+  font-size: 12px;
+  text-align: center;
+}
+
+.link {
+  composes: eq_link from global;
+}
+
+.divider {
+  @include flex-box($content: center, $align: center);
+  flex: 1 auto;
+  margin: 10px 0;
+
+  > span {
+    flex: 1 auto;
+    height: 2px;
+    background-color: $primary_color;
+  }
+
+  > p {
+    @include reset-margins;
+    color: $primary_color;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin: 0 5px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .content_container {
+    margin-top: -200px;
+  }
+
+  .sign_up_section {
+    padding: 40px 80px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .content_container {
+    margin-top: -150px;
+  }
+
+  .text_layout {
+    h2 {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.9em;
+    }
+  }
+
+  .icon_layout {
+    > ul {
+      > li {
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  .return_text {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  .infographic {
+    height: 60px;
+    margin-bottom: 25px;
+  }
+}

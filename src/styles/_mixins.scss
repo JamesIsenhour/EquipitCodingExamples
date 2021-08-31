@@ -1,0 +1,290 @@
+/**
+  Mixins:
+    _Arrow
+    _Button
+    _ElementHiding
+    _Layouts
+    _Margins
+*/
+
+/**
+  _Button
+    _btn             : button that has params to change background color and text color.
+    _btn_transparent : button that inherits a background color and allows one to change                       the text color.
+    _btn_icon        : button that has params to change background color and fill (Icon)                     color.
+*/
+
+// Helper mixin for all buttons, new buttons can use this mixin to gain all the properties of previous buttons.
+@mixin btn_properties {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: color .5s, background-color .5s, border-color .5s;
+}
+
+@mixin new_btn(
+  $bkgColor: $primary_color_dark,
+  $textColor: white
+) {
+  @include btn_properties;
+  transition: color .5s, background-color .5s;
+
+  background-color: $bkgColor;
+  color: $textColor;
+
+  &:hover {
+    background-color: darken($bkgColor, 5%);
+    color: darken($textColor, 5%);
+  }
+
+  &:active {
+    background-color: darken($bkgColor, 12%);
+    color: darken($textColor, 12%);
+  }
+}
+
+@mixin border_btn(
+  $borderColor: $primary_color_dark
+) {
+  @include btn_properties;
+  border: 3px $borderColor solid;
+  color: $borderColor;
+  background-color: inherit;
+
+  &:hover {
+    border-color: darken($borderColor, 5%);
+    color: darken($borderColor, 5%);
+    background-color: rgba(0, 0, 0, .05);
+  }
+
+  &:active {
+    border-color: darken($borderColor, 12%);
+    color: darken($borderColor, 12%);
+    background-color: rgba(0, 0, 0, .1);
+  }
+}
+
+@mixin btn(
+  $backgroundColor: null,
+  $backgroundColorHover: null,
+  $backgroundColorActive: null,
+  $textColor: null,
+  $textColorHover: null,
+  $textColorActive: null
+) {
+  @include btn_properties;
+  @if ($backgroundColor != null) {
+    background-color: $backgroundColor;
+  }
+  @if ($textColor != null) {
+    color: $textColor;
+  }
+
+  &:hover {
+    @if ($backgroundColorHover != null) {
+      background-color: $backgroundColorHover !important;
+    }
+    @if ($textColorHover != null) {
+      color: $textColorHover !important;
+    }
+  }
+
+  &:active {
+    @if ($backgroundColorActive != null) {
+      background-color: $backgroundColorActive !important;
+    }
+    @if ($textColorActive != null) {
+      color: $textColorActive !important;
+    }
+  }
+}
+
+/**
+  _transparent_btn
+    params:
+      textColor: initial text color
+        default: null
+      textColorHover: text color when button is hovered over
+        default: null
+      textColorActive: text color when button is being pressed
+        default: null
+
+    ** All params are optional, will appear with CSS defaults if not defined.
+      * Hover and Active effects will not take place if hover and active params are not set.
+
+  Transparent buttons are buttons where the background equal to the div they reside in. They are used only to change the text color as an indication of whether they were pressed or not.
+*/
+
+@mixin btn_transparent (
+  $textColor: null,
+  $textColorHover: null,
+  $textColorActive: null
+) {
+  @include btn(
+    $backgroundColor: inherit,
+    $textColor: $textColor,
+    $textColorHover: $textColorHover,
+    $textColorActive: $textColorActive
+  )
+}
+
+@mixin btn_icon (
+  $backgroundColor: inherit,
+  $backgroundColorHover: null,
+  $backgroundColorActive: null,
+  $fillColor: null,
+  $fillColorHover: null,
+  $fillColorActive: null
+) {
+  @include btn_properties;
+  background-color: $backgroundColor;
+
+  @if ($fillColor != null) {
+    > svg {
+      fill: $fillColor;
+      transition: fill .5s;
+    }
+  }
+
+  &:hover {
+    @if ($backgroundColorHover != null) {
+      background-color: $backgroundColorHover;
+    }
+    @if ($fillColorHover != null) {
+      > svg {
+        fill: $fillColorHover !important;
+        transition: fill .5s;
+      }
+    }
+  }
+
+  &:active {
+    @if ($backgroundColorActive != null) {
+      background-color: $backgroundColorActive;
+    }
+    @if ($fillColorActive != null) {
+      > svg {
+        fill: $fillColorActive !important;
+        transition: fill .5s;
+      }
+    }
+  }
+}
+
+// End Buttons *-------------------------------------------------------
+
+/**
+  _Arrow
+    _create_arrow : utilizes border CSS properties to visually create an arrow
+*/
+
+/**
+  _create_arrow
+    params:
+      color: the color of the arrow
+        default: inherit
+      direction: the direction the arrow is pointing
+        values: up, down, left, right
+        default: up
+      width (Optional): when added, makes an equilateral arrow.
+        default: null
+*/
+
+@mixin create_arrow(
+  $color: inherit,
+  $direction: 'up',
+  $width: null
+) {
+  @if ($width == null) {
+    border-color: transparent;
+    border-style: solid;
+  } @else {
+    border: transparent solid $width;
+  }
+
+  @if ($direction == 'up') {
+    border-bottom-color: $color;
+  }
+  @if ($direction == 'down') {
+    border-top-color: $color;
+  }
+  @if ($direction == 'left') {
+    border-right-color: $color;
+  }
+  @if ($direction == 'right') {
+    border-left-color: $color;
+  }
+}
+
+/**
+  _Layouts
+    _flex-box : a mixin to simplify creation of a flex-box layout element.
+*/
+
+/**
+  _flex_box
+    params:
+      content: justify-content
+        values: flex-start, flex-end, center, space-between, space-around
+        default null (CSS default flex-start)
+      align: align-items
+        values: stretch, flex-start, flex-end, center, baseline
+        default null (CSS default stretch)
+      direction: flex-direction
+        values: row, row-reverse, column, column-reverse
+        default null (CSS default row)
+      wrap: flex-wrap
+        values: nowrap, wrap, wrap-reverse
+        default null (CSS default nowrap)
+
+  ** All params are optional, not including a param will result in the standard CSS defaults.
+*/
+
+@mixin flex-box(
+  $content: null,
+  $align: null,
+  $direction: null,
+  $wrap: null
+) {
+  display: flex;
+
+  @if ($content != null) {
+    justify-content: $content;
+  }
+  @if ($align != null) {
+    align-items: $align;
+  }
+  @if ($direction != null) {
+    flex-direction: $direction;
+  }
+  @if ($wrap != null) {
+    flex-wrap: $wrap;
+  }
+}
+
+/**
+  _Margins
+    _reset_margins : removes margins and padding
+*/
+
+@mixin reset_margins() {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+  _ElementHiding
+    _hide_element :
+      sets the element to the top of the screen and hides it behind all other elements using opacity and z-index.
+      **Use only if the element must remain on the screen for other functionality to work. i.e. file inputs**.
+*/
+
+@mixin hide_element() {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  z-index: -999;
+}

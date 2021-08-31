@@ -1,0 +1,44 @@
+@import 'colors';
+@import 'mixins';
+
+.viewer_content_container {
+  @include flex-box;
+  flex: 1 auto;
+}
+
+.content_container {
+  composes: bkg_color_white from global;
+  @include flex-box($direction: column);
+  flex: 4 auto;
+  padding: 20px;
+  width: 1080px;
+  max-width: 1080px;
+}
+
+.loadout_controls {
+  composes: bkg_color_primary_dark from global;
+  @include flex-box;
+  flex: 0 auto;
+  width: 100%;
+  height: 10px;
+}
+
+.items_side_bar {
+  @include flex-box;
+  width: 30%;
+  padding: 20px;
+}
+
+.separator {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    top: 0;
+    left: 0;
+    background-color: $primary_color;
+  }
+}

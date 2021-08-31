@@ -1,0 +1,23 @@
+@import 'mixins';
+@import 'colors';
+
+.result {
+  flex: 0 0 auto;
+  margin-bottom: 20px;
+
+  img {
+    display: block;
+    border: 2px solid $primary_color_light;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  &:hover {
+    img {
+      border-color: $secondary_color;
+    }
+  }
+}

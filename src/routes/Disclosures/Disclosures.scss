@@ -1,0 +1,6 @@
+@import 'mixins';
+
+.link {
+  @include flex-box($content: center);
+  margin-bottom: 10px;
+}

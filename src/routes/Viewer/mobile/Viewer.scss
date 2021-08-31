@@ -1,0 +1,127 @@
+@import 'mixins';
+@import 'colors';
+
+.loadout_image {
+  position: fixed;
+  display: inline-block;
+  top: 50px;
+  left: 0px;
+  width: 100vw;
+  height: auto;
+  z-index: 5;
+  border-bottom: 2px solid $primary_color_light;
+}
+
+.loadout_proxy {
+  composes: bkg_color_primary_light from global;
+  @include flex-box();
+  width: 100vw;
+  height: 100vw * (2 / 3);
+  border-bottom: 2px solid $primary_color_light;
+}
+
+.user_info_container {
+  @include flex-box();
+  flex: 0 0 auto;
+  padding: 8px;
+  padding-bottom: 0;
+}
+
+.profile_image_container {
+  flex: 0 0 auto;
+  width: 15%;
+
+  > img {
+    width: 100%;
+    height: auto;
+    border-radius: 100%;
+    background-color: $primary_color_light;
+  }
+}
+
+.titles_container {
+  @include flex-box($direction: column, $content: center, $align: flex-start);
+  flex: 1 auto;
+  max-width: calc(85% - 25px);
+  padding: 0 8px;
+}
+
+.loadout_title {
+  @include reset-margins;
+  max-width: 100%;
+  text-decoration: none;
+  font-size: 1.3em;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media only screen and (max-width: 400px) {
+    font-size: 1.1em;
+  }
+}
+
+.user_name {
+  @include reset-margins;
+  max-width: 100%;
+  font-size: 1.1em;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media only screen and (max-width: 400px) {
+    font-size: 0.9em;
+  }
+}
+
+.share_menu {
+  @include flex-box($content: flex-end);
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+
+  &:active > svg { fill: $primary_color_dark; }
+}
+
+.summary_container {
+  @include reset-margins;
+  flex: 0 0 auto;
+  padding: 1px 10px;
+  min-height: 1em;
+  max-height: 4.5em;
+  width: 100%;
+  font-size: 1em;
+  overflow: hidden;
+}
+
+%divider_bar {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: $primary_color;
+}
+
+.section_title {
+  @include flex-box($align: center);
+
+  > p {
+    @include reset-margins;
+    color: $primary_color_dark;
+    font-size: 1em;
+    font-weight: 500;
+    margin: 0 5px;
+    white-space: nowrap;
+  }
+
+  &:before {
+    @extend %divider_bar;
+    flex: 0 0 auto;
+    width: 2%;
+  }
+
+  &:after {
+    @extend %divider_bar;
+    width: 100%;
+  }
+}

@@ -1,0 +1,196 @@
+@import 'colors';
+@import 'mixins';
+
+@mixin border-btn(
+  $color: $secondary_color,
+  $backgroundColor: white
+) {
+  transition: border-color .5s, color .5s, background-color .5s;
+  background-color: $backgroundColor;
+  color: $color;
+  border: 2px solid $color;
+
+  &:active {
+    background-color: darken($backgroundColor, 10%);
+    color: darken($color, 10%);
+    border-color: darken($color, 10%);
+  }
+}
+
+.logo {
+  height: 30px;
+  background: url('assets/mobile/logo_grey.svg') no-repeat;
+  margin-bottom: 15px;
+}
+
+.content_container {
+  @include flex-box($direction: column);
+  align-self: center;
+  margin-top: -170px;
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+.site_description_container {
+  @include flex-box($direction: column);
+  flex: 0 0 auto;
+  padding: 15px;
+  font-size: 0.9em;
+  font-weight: 400;
+  z-index: 1;
+
+  > p {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  > span {
+    margin-bottom: 5px;
+  }
+}
+
+.details_bar {
+  composes: font_color_primary_dark from global;
+  @include flex-box($direction: column);
+  margin-top: 20px;
+}
+
+.details_bar_height {
+  min-height: 300px;
+}
+
+.details_text_container {
+  @include flex-box($direction: column);
+  padding: 0 30px 15px 30px;
+
+  p {
+    @include reset-margins;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  > ul {
+    margin-bottom: 0;
+
+    > li {
+      @include reset-margins;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+  }
+}
+
+.home_button {
+  align-self: center;
+  padding: 5px 8px;
+  font-size: 1em;
+}
+
+.filled_button {
+  composes: eq_btn_secondary from global;
+}
+
+.border_button {
+  border: 2px solid $secondary_color;
+  color: $secondary_color;
+  transition: border-color 0.5s, color 0.5s;
+
+  &:hover {
+    border-color: darken($secondary_color, 10%);
+    color: darken($secondary_color, 10%);
+  }
+
+  &:active {
+    border-color: darken($secondary_color, 20%);
+    color: darken($secondary_color, 20%);
+  }
+}
+
+.white_background {
+  composes: bkg_color_white from global;
+}
+
+.grey_background {
+  composes: bkg_color_primary_light from global;
+}
+
+.banner {
+  width: 140%;
+  height: auto;
+  margin-left: -36%;
+}
+
+.get_started {
+  margin: 10px 0 5px 0;
+  width: 50%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.infographic_container {
+  composes: bkg_color_primary_dark from global;
+  align-self: center;
+  height: 70px;
+  width: 100px;
+  padding: 10px 5px;
+}
+
+.infographic {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.infographic_share {
+  background-image: url('../assets/InfographicShareWhite.png');
+}
+
+.infographic_inventory {
+  background-image: url('../assets/InfographicProductWhite.png');
+}
+
+.infographic_build {
+  background-image: url('../assets/InfographicBuildWhite.png');
+}
+
+.infographic_paid {
+  background-image: url('../assets/MoneySign.svg')
+}
+
+.details_title_container {
+  @include flex-box;
+  width: 100%;
+
+  > h2 {
+    @include reset-margins;
+    background-color: $primary_color_dark;
+    color: white;
+    text-align: center;
+    flex: 1 auto;
+    padding: 5px;
+    align-self: flex-start;
+    font-size: 1.4em;
+    font-weight: 500;
+  }
+}
+
+.margin_left_fix {
+  margin-left: -2px;
+}
+
+.margin_right_fix {
+  margin-right: -2px;
+}
+
+.login_prompt {
+  @include reset_margins;
+  margin-top: 2px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.link {
+  composes: eq_link from global;
+}

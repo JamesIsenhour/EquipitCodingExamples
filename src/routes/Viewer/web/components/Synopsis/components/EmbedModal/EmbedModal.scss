@@ -1,0 +1,28 @@
+@import 'mixins';
+@import 'colors';
+
+.iframe_container {
+  composes: bkg_color_off_white from global;
+  @include flex-box($direction: column);
+  width: 50vw;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.button_group {
+  margin-top: 5px;
+}
+
+.iframe_code_container {
+  margin-top: 25px;
+}
+
+.iframe_code {
+  composes: bkg_color_white from global;
+  margin-top: 5px;
+  word-break: break-all;
+  max-width: 100%;
+  padding: 4px;
+  font-size: 1em;
+  border: 1px solid $primary_color_light;
+}

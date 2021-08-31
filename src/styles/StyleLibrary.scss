@@ -1,0 +1,204 @@
+@import 'colors';
+@import 'mixins';
+
+/*
+  Index:
+    _Buttons
+    _Colors
+*/
+
+:global {
+  .eq_btn_secondary {
+    @include new_btn( $bkgColor: $secondary-color );
+  }
+
+  .eq_btn_primary_dark {
+    @include new_btn( $bkgColor: $primary_color_dark );
+  }
+
+  .eq_btn_primary {
+    @include new_btn( $bkgColor: $primary_color );
+  }
+
+  .eq_btn_error {
+    @include new_btn( $bkgColor: $error_color );
+  }
+
+  .eq_border_btn_secondary {
+    @include border_btn( $borderColor: $secondary-color );
+  }
+
+  .eq_border_btn_primary_dark {
+    @include border_btn( $borderColor: $primary_color_dark );
+  }
+
+  .eq_border_btn_primary {
+    @include border_btn( $borderColor: $primary_color );
+  }
+
+  .eq_border_btn_white {
+    @include border_btn( $borderColor: $white );
+  }
+
+  .eq_border_btn_error {
+    @include border_btn( $borderColor: $error_color );
+  }
+
+  .eq_link {
+    @include btn_properties;
+    color: $link-color;
+    transition: color .5s;
+
+    &:active {
+      color: darken($link-color, 10%);
+    }
+  }
+
+  .bkg_color_white { background-color: white; }
+  .font_color_white { color: white; }
+
+  .bkg_color_off_white { background-color: $off_white; }
+  .font_color_off_white { color: $off_white; }
+
+  .bkg_color_off_black { background-color: $off_black; }
+  .font_color_off_black { color: $off_black; }
+
+  .bkg_color_primary_dark { background-color: $primary_color_dark; }
+  .font_color_primary_dark { color: $primary_color_dark; }
+
+  .bkg_color_primary { background-color: $primary_color; }
+  .font_color_primary { color: $primary_color; }
+
+  .bkg_color_primary_light { background-color: $primary_color_light; }
+  .font_color_primary_light { color: $primary_color_light; }
+
+  .bkg_color_secondary { background-color: $secondary_color; }
+  .font_color_secondary { color: $secondary_color; }
+
+  .bkg_color_error { background-color: $error_color; }
+  .font_color_error { color: $error_color; }
+
+  .bkg_color_link { background-color: $link_color; }
+  .font_color_link { color: $link_color; }
+}
+
+
+
+
+
+
+
+
+
+/*
+  _Buttons
+  Namespace: eq_btn_OPT
+  Options: {transparent_}
+           {backgroundColorForButton}
+*/
+
+// inputcolor_A
+.eq_btn_orange {
+  @include btn(
+    $backgroundColor: $secondary-color,
+    $backgroundColorHover:$secondary-color-hover,
+    $backgroundColorActive: $secondary-color-active,
+    $textColor: $white
+  );
+}
+
+// inputcolor_D
+.eq_btn_offwhite {
+  @include btn(
+    $backgroundColor: $primary_color,
+    $backgroundColorHover: $primary_color-light,
+    $backgroundColorActive: $primary_color_dark,
+    $textColor: $white,
+    $textColorHover: $link-color-active,
+    $textColorActive: $white
+  );
+}
+
+//inputcolor_B
+.eq_btn_transparent_primary_dark {
+  @include btn_transparent(
+    $textColor: $white,
+    $textColorHover: #B4C9CC,
+    $textColorActive: $black
+  )
+}
+
+.eq_btn_transparent_primary {
+  @include btn_transparent(
+    $textColor: $white,
+    $textColorHover: #025C84,
+    $textColorActive: $primary_color_dark
+  )
+}
+
+.eq_btn_link {
+  @include btn(
+    $backgroundColor: $link-color,
+    $backgroundColorHover:$link-color-hover,
+    $backgroundColorActive: $link-color-active,
+    $textColor: $white
+  )
+}
+
+.eq_link {
+  @include btn(
+    $textColor: $link_color,
+    $textColorHover: $link_color_hover,
+    $textColorActive: $link_color_active
+  );
+  text-decoration: none;
+}
+
+/*
+  _Colors
+  Namespace: bkg_color_OPT || text_color_OPT
+  Options: {color}
+*/
+
+// maincolor_A
+.bkg_color_primary_dark {
+  background-color: $primary_color_dark;
+}
+
+.text_color_primary_dark {
+  color: $primary_color_dark;
+}
+
+// maincolor_B
+.bkg_color_primary {
+  background-color: $primary_color;
+}
+
+.text_color_primary {
+  color: $primary_color;
+}
+
+// .maincolor_C
+.bkg_color_primary_light {
+  background-color: $primary_color_light;
+}
+
+.text_color_primary_light {
+  color: $primary_color_light;
+}
+
+.bkg_color_secondary {
+  background-color: $secondary_color;
+}
+
+.text_color_secondary {
+  color: $secondary_color;
+}
+
+.bkg_color_off_white {
+  background-color: $off_white;
+}
+
+.bkg_color_white {
+  background-color: $white;
+}

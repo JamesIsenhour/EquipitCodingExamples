@@ -1,0 +1,34 @@
+@import 'mixins';
+
+.card_title {
+  margin: 0 0 15px 0;
+  font-size: 1.4em;
+  font-weight: 400;
+}
+
+.small_card {
+  width: 450px /*250px*/;
+  height: inherit;
+}
+
+.medium_card {
+  width: 400px;
+  flex: 0 0 auto;
+}
+
+.large_card {
+  max-width: 930px /*870px*/;
+  position: relative;
+}
+
+.card_padding {
+  padding: 30px;
+}
+
+.vertical {
+  @include flex-box($direction: column, $align: flex-start);
+}
+
+.horizontal {
+  @include flex-box;
+}

@@ -1,0 +1,36 @@
+@import 'colors';
+@import 'mixins';
+
+.item_container {
+  composes: bkg_color_white from global;
+  @include flex-box;
+  cursor: pointer;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.image_container {
+  @include flex-box($content: center, $align: center);
+  flex: 0 0 auto;
+  width: 100px;
+  height: 100px;
+  padding: 7px;
+  border: 4px $primary_color solid;
+  pointer-events: none;
+
+  > img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    pointer-events: none;
+  }
+}
+
+.title {
+  @include reset-margins;
+  word-wrap: break-word;
+  padding: 10px;
+  font-size: 1.2em;
+  pointer-events: none;
+}

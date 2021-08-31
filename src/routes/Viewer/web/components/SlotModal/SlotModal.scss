@@ -1,0 +1,44 @@
+@import 'mixins';
+@import 'colors';
+
+%arrow {
+  position: absolute;
+  cursor: pointer;
+  outline: none;
+  top: calc(50% - 37px);
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  transition: border-color 0.5s;
+}
+
+.slot_modal_content {
+  position: relative;
+}
+
+.arrow_prev {
+  @extend %arrow;
+  left: -35px;
+  border-right: 25px solid $secondary_color;
+
+  &:hover {
+    border-right-color: darken($secondary_color, 5%);
+  }
+
+  &:active {
+    border-right-color: darken($secondary_color, 15%);
+  }
+}
+
+.arrow_next {
+  @extend %arrow;
+  right: -35px;
+  border-left: 25px solid $secondary_color;
+
+  &:hover {
+    border-left-color: darken($secondary_color, 5%);
+  }
+
+  &:active {
+    border-left-color: darken($secondary_color, 15%);
+  }
+}

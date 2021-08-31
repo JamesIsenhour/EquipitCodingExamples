@@ -1,0 +1,23 @@
+@import 'colors';
+@import 'mixins';
+
+.details_container {
+  @include flex-box($direction: column);
+  flex: 1 auto;
+  padding-top: 25px;
+
+  > h2 {
+    @include reset-margins;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    font-weight: 400;
+  }
+
+  > p {
+    @include reset-margins;
+    background-color: white;
+    padding: 10px 12px;
+    min-height: 200px;
+    font-size: 1em;
+  }
+}
